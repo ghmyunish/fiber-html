@@ -349,7 +349,7 @@
 // Paste the Web App URL you get after deploying the Apps Script
 // (see Code.gs / setup instructions) between the quotes below.
 // ==================================================================
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby1ypO6w-NUYwpYO8jTR-OCD0mi9Yf63iTMk3IV-QC4YQ54k7Ltn0N7aNy2LNmwiYp6dw/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbygM4IsIOo3k485CA1dFsVmYr098HuN5Ey85J0Tsc-GsvRo2Gr_PhtnMxFDEW-nmmkiEA/exec";
 
 const KEYS = {
   fiberProduction: 'fiberProduction',
@@ -370,6 +370,42 @@ function backendConfigured(){
   return APPS_SCRIPT_URL && !APPS_SCRIPT_URL.startsWith('PASTE_');
 }
 
+// ------------------------------------------------------------------
+// JSONP transport — loads the Apps Script response via a <script> tag
+// instead of fetch(). Script-tag loads are never subject to CORS, so
+// this works reliably regardless of how Google's proxy handles headers
+// for cross-origin fetch/XHR requests (a known source of flaky CORS
+// errors with Apps Script Web Apps).
+// ------------------------------------------------------------------
+function jsonp(params){
+  return new Promise((resolve, reject)=>{
+    const cbName = 'jsonp_cb_' + Math.random().toString(36).slice(2) + Date.now();
+    const script = document.createElement('script');
+    let done = false;
+    const cleanup = ()=>{ done = true; delete window[cbName]; script.remove(); };
+    const timer = setTimeout(()=>{
+      if(done) return;
+      cleanup();
+      reject(new Error('Request timed out contacting the database'));
+    }, 20000);
+    window[cbName] = (data)=>{
+      if(done) return;
+      clearTimeout(timer);
+      cleanup();
+      resolve(data);
+    };
+    const qs = new URLSearchParams({ ...params, callback: cbName }).toString();
+    script.src = `${APPS_SCRIPT_URL}?${qs}`;
+    script.onerror = ()=>{
+      if(done) return;
+      clearTimeout(timer);
+      cleanup();
+      reject(new Error('Network error contacting the database'));
+    };
+    document.body.appendChild(script);
+  });
+}
+
 function coerceRow(key, row){
   // Google Sheets can hand back numbers/strings/Date objects — normalize them.
   const r = { ...row };
@@ -385,8 +421,7 @@ async function loadAll(){
     return;
   }
   try{
-    const res = await fetch(`${APPS_SCRIPT_URL}?action=listAll`);
-    const data = await res.json();
+    const data = await jsonp({ action: 'listAll' });
     if(!data.ok) throw new Error(data.error || 'load failed');
     Object.keys(KEYS).forEach(k=>{
       state[k] = (data.data[k] || []).map(row => coerceRow(k, row));
@@ -407,12 +442,7 @@ async function persist(key, records){
   setSaving(false);
   try{
     for(const row of records){
-      const res = await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // avoids CORS preflight on Apps Script
-        body: JSON.stringify({ action: 'append', sheet: key, row }),
-      });
-      const data = await res.json();
+      const data = await jsonp({ action: 'append', sheet: key, row: JSON.stringify(row) });
       if(!data.ok) throw new Error(data.error || 'save failed');
     }
     records.forEach(row => state[key].push(row));
@@ -429,12 +459,7 @@ async function deleteRecord(key, id){
   if(!confirm('Delete this entry? This cannot be undone.')) return;
   setSaving(false);
   try{
-    const res = await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify({ action: 'delete', sheet: key, id }),
-    });
-    const data = await res.json();
+    const data = await jsonp({ action: 'delete', sheet: key, id });
     if(!data.ok) throw new Error(data.error || 'delete failed');
     state[key] = state[key].filter(r => r.id !== id);
     setSaving(true);
