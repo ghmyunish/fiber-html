@@ -19,80 +19,84 @@
     --red:#b3261e;
     --red-bg:#fdeceb;
     --gray-bg:#eef0f2;
-    --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    --mono:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   }
   *{box-sizing:border-box;}
   body{
-    margin:0; background:var(--paper); color:var(--ink);
-    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size:14px;
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Segoe UI", Helvetica, Arial, sans-serif;font-size:14px;
   }
   header{
     background:linear-gradient(135deg,var(--slate-dark),var(--slate));
-    color:#fff; padding:18px 24px;
-    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    color:#fff;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
   }
-  header h1{margin:0; font-size:20px; letter-spacing:.3px;}
-  header .sub{font-size:12px; opacity:.85; margin-top:2px;}
-  .save-indicator{font-size:11px; opacity:.9; display:flex; align-items:center; gap:6px;}
+  header h1{margin:0;font-size:20px;letter-spacing:.3px;}
+  header .sub{font-size:12px;opacity:.85;margin-top:2px;}
+  .save-indicator{font-size:11px;opacity:.9;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
   .dot{width:8px;height:8px;border-radius:50%;background:#7CD992;display:inline-block;}
+  .toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
   nav{
-    display:flex; gap:2px; background:var(--slate-dark); padding:0 16px; overflow-x:auto;
+    display:flex;gap:2px;background:var(--slate-dark);padding:0 16px;overflow-x:auto;
   }
   nav button{
-    background:transparent; border:none; color:#cfe0ec; padding:12px 16px; cursor:pointer;
-    font-size:13px; white-space:nowrap; border-bottom:3px solid transparent;
+    background:transparent;border:none;color:#cfe0ec;padding:12px 16px;cursor:pointer;font-size:13px;white-space:nowrap;border-bottom:3px solid transparent;
   }
-  nav button.active{ color:#fff; border-bottom:3px solid #7CD992; font-weight:600; }
-  nav button:hover{ color:#fff; }
-  main{ padding:20px 24px 60px; max-width:1300px; margin:0 auto; }
-  .card{ background:var(--card); border:1px solid var(--line); border-radius:8px; padding:18px 20px; margin-bottom:18px; }
-  .card h2{ margin:0 0 4px; font-size:16px; color:var(--slate-dark); }
-  .card p.desc{ margin:0 0 14px; color:#5b6770; font-size:12.5px; }
-  form .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; align-items:end; }
-  label{ display:block; font-size:11.5px; font-weight:600; color:#3c4750; margin-bottom:4px; text-transform:uppercase; letter-spacing:.4px; }
+  nav button.active{color:#fff;border-bottom:3px solid #7CD992;font-weight:600;}
+  nav button:hover{color:#fff;}
+  main{padding:20px 24px 60px;max-width:1300px;margin:0 auto;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin-bottom:18px;}
+  .card h2{margin:0 0 4px;font-size:16px;color:var(--slate-dark);}
+  .card p.desc{margin:0 0 14px;color:#5b6770;font-size:12.5px;}
+  form .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;align-items:end;}
+  label{display:block;font-size:11.5px;font-weight:600;color:#3c4750;margin-bottom:4px;text-transform:uppercase;letter-spacing:.4px;}
   input[type=text], input[type=date], input[type=number], select{
-    width:100%; padding:8px 9px; border:1px solid #c7cdd2; border-radius:5px; font-size:13.5px; background:#fff;
+    width:100%;padding:8px 9px;border:1px solid #c7cdd2;border-radius:5px;font-size:13.5px;background:#fff;
   }
-  input:required:invalid{ }
-  .req::after{ content:" *"; color:var(--red); }
+  .req::after{content:" *";color:var(--red);}
   .btn{
-    background:var(--slate); color:#fff; border:none; padding:9px 16px; border-radius:5px;
-    cursor:pointer; font-size:13px; font-weight:600;
+    background:var(--slate);color:#fff;border:none;padding:9px 16px;border-radius:5px;cursor:pointer;font-size:13px;font-weight:600;
   }
-  .btn:hover{ background:var(--slate-dark); }
-  .btn.secondary{ background:#fff; color:var(--slate); border:1px solid var(--slate); }
-  .btn.secondary:hover{ background:#eef4f9; }
-  .btn:disabled{ background:#aab4bb; cursor:not-allowed; }
+  .btn:hover{background:var(--slate-dark);}
+  .btn.secondary{background:#fff;color:var(--slate);border:1px solid var(--slate);}
+  .btn.secondary:hover{background:#eef4f9;}
+  .btn:disabled{background:#aab4bb;cursor:not-allowed;}
   .warning{
-    background:var(--amber-bg); border:1px solid #e7cd8a; color:#7a5b00; padding:10px 12px;
-    border-radius:6px; font-size:13px; margin-top:10px; display:none;
+    background:var(--amber-bg);border:1px solid #e7cd8a;color:#7a5b00;padding:10px 12px;border-radius:6px;font-size:13px;margin-top:10px;display:none;
   }
-  .warning.show{ display:block; }
-  .warning strong{ display:block; margin-bottom:2px; }
-  table{ width:100%; border-collapse:collapse; margin-top:6px; font-size:13px; }
-  th, td{ text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
-  th{ background:#f1f3f5; color:#3c4750; font-size:11.5px; text-transform:uppercase; letter-spacing:.3px; }
-  tr:hover td{ background:#fafbfc; }
-  .mono{ font-family:var(--mono); font-size:12.5px; }
-  .chip{ display:inline-block; padding:3px 9px; border-radius:20px; font-size:11.5px; font-weight:600; }
-  .chip.notstarted{ background:var(--gray-bg); color:#5b6770; }
-  .chip.partial{ background:var(--amber-bg); color:#7a5b00; }
-  .chip.full{ background:var(--green-bg); color:var(--green); }
-  .chip.skip{ background:var(--red-bg); color:var(--red); }
-  .pending-table{ margin-top:10px; }
-  td.rm{ color:var(--red); cursor:pointer; font-size:12px; font-weight:600; }
-  .empty{ color:#8b959c; font-style:italic; padding:16px 0; }
-  .stat-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:18px; }
-  .stat{ background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
-  .stat .num{ font-size:24px; font-weight:700; color:var(--slate-dark); }
-  .stat .lbl{ font-size:11.5px; color:#5b6770; text-transform:uppercase; letter-spacing:.3px; margin-top:2px;}
-  .section-title{ font-size:14px; font-weight:700; color:var(--slate-dark); margin:24px 0 8px; padding-bottom:6px; border-bottom:2px solid var(--slate); }
-  .flag-banner{ background:var(--red-bg); border:1px solid #f0b8b3; color:var(--red); padding:10px 14px; border-radius:6px; font-size:13px; margin-bottom:14px; }
-  .flag-banner.ok{ background:var(--green-bg); border-color:#b6e0c2; color:var(--green); }
-  .helptext{ font-size:11.5px; color:#8b959c; margin-top:3px; }
-  footer{ text-align:center; padding:24px; color:#8b959c; font-size:11.5px; }
+  .warning.show{display:block;}
+  .warning strong{display:block;margin-bottom:2px;}
+  table{width:100%;border-collapse:collapse;margin-top:6px;font-size:13px;}
+  th, td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{background:#f1f3f5;color:#3c4750;font-size:11.5px;text-transform:uppercase;letter-spacing:.3px;}
+  tr:hover td{background:#fafbfc;}
+  .mono{font-family:var(--mono);font-size:12.5px;}
+  .chip{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11.5px;font-weight:600;}
+  .chip.notstarted{background:var(--gray-bg);color:#5b6770;}
+  .chip.partial{background:var(--amber-bg);color:#7a5b00;}
+  .chip.full{background:var(--green-bg);color:var(--green);}
+  .chip.skip{background:var(--red-bg);color:var(--red);}
+  .pending-table{margin-top:10px;}
+  td.rm{color:var(--red);cursor:pointer;font-size:12px;font-weight:600;}
+  .empty{color:#8b959c;font-style:italic;padding:16px 0;}
+  .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:18px;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px;}
+  .stat .num{font-size:24px;font-weight:700;color:var(--slate-dark);}
+  .stat .lbl{font-size:11.5px;color:#5b6770;text-transform:uppercase;letter-spacing:.3px;margin-top:2px;}
+  .section-title{font-size:14px;font-weight:700;color:var(--slate-dark);margin:24px 0 8px;padding-bottom:6px;border-bottom:2px solid var(--slate);}
+  .flag-banner{background:var(--red-bg);border:1px solid #f0b8b3;color:var(--red);padding:10px 14px;border-radius:6px;font-size:13px;margin-bottom:14px;}
+  .flag-banner.ok{background:var(--green-bg);border-color:#b6e0c2;color:var(--green);}
+  .helptext{font-size:11.5px;color:#8b959c;margin-top:3px;}
+  .banner{
+    background:#fdeceb;border-bottom:1px solid #f0b8b3;color:#b3261e;padding:10px 24px;font-size:13px;
+  }
+  footer{text-align:center;padding:24px;color:#8b959c;font-size:11.5px;}
+  @media (max-width: 700px){
+    header{padding:16px;}
+    main{padding:16px 14px 48px;}
+  }
 </style>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 
@@ -102,12 +106,16 @@
     <div class="sub">Banana-fiber &rarr; paper production &middot; Chitwan, Nepal</div>
   </div>
   <div class="save-indicator">
-    <span class="dot" id="saveDot"></span><span id="saveText">All changes saved</span>
-    <button type="button" class="btn secondary" id="refreshBtn" style="padding:4px 10px;font-size:11.5px;margin-left:10px;">&#8635; Refresh</button>
+    <span class="dot" id="saveDot"></span><span id="saveText">Starting up...</span>
+    <div class="toolbar">
+      <button type="button" class="btn secondary" id="exportTabBtn" style="padding:4px 10px;font-size:11.5px;">Export Tab</button>
+      <button type="button" class="btn secondary" id="exportAllBtn" style="padding:4px 10px;font-size:11.5px;">Export All</button>
+      <button type="button" class="btn secondary" id="refreshBtn" style="padding:4px 10px;font-size:11.5px;">&#8635; Refresh</button>
+    </div>
   </div>
 </header>
-<div id="configBanner" style="display:none;background:#fdeceb;border-bottom:1px solid #f0b8b3;color:#b3261e;padding:10px 24px;font-size:13px;">
-  <strong>Setup needed:</strong> This dashboard isn't connected to the Google Sheet database yet. Open <code>index.html</code> and paste your Apps Script Web App URL into the <code>APPS_SCRIPT_URL</code> constant near the top of the script.
+<div id="configBanner" class="banner" style="display:none;">
+  <strong>Setup needed:</strong> This dashboard is not connected to Supabase yet. Add your Supabase URL and anon key in <code>index.html</code>, then run the bootstrap SQL once in Supabase.
 </div>
 
 <nav id="tabNav">
@@ -119,8 +127,6 @@
 </nav>
 
 <main>
-
-<!-- ================= OVERVIEW ================= -->
 <section id="tab-overview">
   <div class="card">
     <h2>How this system works</h2>
@@ -132,31 +138,24 @@
       This page gives you the full picture: what's been produced, what's been used, and what still needs attention.
     </p>
   </div>
-
   <div class="stat-row" id="statRow"></div>
-
   <div id="flagBanner"></div>
-
   <div class="card">
     <div class="section-title" style="margin-top:0;">Fiber Batches</div>
     <p class="desc">Every fiber batch produced, how much has gone into sacks, and what's left.</p>
     <div id="ovFiberBatches"></div>
-
     <div class="section-title">Fiber Sacks</div>
     <p class="desc">Every sack of fiber packed, how much of it has gone into paper production, and what's left.</p>
     <div id="ovFiberSacks"></div>
-
     <div class="section-title">Paper Batches</div>
     <p class="desc">Every paper batch produced, how many sheets have gone into paper sacks, and what's left.</p>
     <div id="ovPaperBatches"></div>
-
     <div class="section-title">Paper Sacks</div>
     <p class="desc">Every sack of paper packed and ready to ship.</p>
     <div id="ovPaperSacks"></div>
   </div>
 </section>
 
-<!-- ================= FIBER PRODUCTION ================= -->
 <section id="tab-fiberProd" style="display:none;">
   <div class="card">
     <h2>Fiber Production Log</h2>
@@ -175,9 +174,7 @@
           <label class="req">Entered By</label>
           <input type="text" id="fp_by" placeholder="Operator name" required>
         </div>
-        <div>
-          <button type="submit" class="btn">Save Batch</button>
-        </div>
+        <div><button type="submit" class="btn">Save Batch</button></div>
       </div>
     </form>
   </div>
@@ -187,11 +184,10 @@
   </div>
 </section>
 
-<!-- ================= FIBER SACK STORAGE ================= -->
 <section id="tab-fiberSack" style="display:none;">
   <div class="card">
     <h2>Fiber Sack Storage</h2>
-    <p class="desc">Pack one or more fiber batches into a sack. Add each batch's quantity below, then save the sack. Batches that are already fully used will not appear in the list.</p>
+    <p class="desc">Pack one or more fiber batches into a sack. Add each batch's quantity below, then save the sack.</p>
     <form id="formFiberSackHeader">
       <div class="grid">
         <div>
@@ -219,12 +215,9 @@
         <label class="req">Quantity from this batch (kg)</label>
         <input type="number" id="fs_kg" min="0.1" step="0.1">
       </div>
-      <div>
-        <button type="button" class="btn secondary" id="fs_addline">+ Add to Sack</button>
-      </div>
+      <div><button type="button" class="btn secondary" id="fs_addline">+ Add to Sack</button></div>
     </div>
     <div id="fs_warning" class="warning"></div>
-
     <div class="pending-table">
       <table id="fs_pending_table" style="display:none;">
         <thead><tr><th>Fiber Batch</th><th>Kg</th><th></th></tr></thead>
@@ -238,16 +231,15 @@
   </div>
   <div class="card">
     <h2>All Fiber Sacks</h2>
-    <p class="desc">A sack can contain several fiber batches, so line-item corrections (fixing a wrong kg amount, removing one batch from a sack, etc.) are made directly in the <strong>FiberSackStorage</strong> tab of the Google Sheet.</p>
+    <p class="desc">A sack can contain several fiber batches, so line-item corrections are kept as rows in Supabase.</p>
     <div id="fiberSackTable"></div>
   </div>
 </section>
 
-<!-- ================= PAPER PRODUCTION ================= -->
 <section id="tab-paperProd" style="display:none;">
   <div class="card">
     <h2>Paper Production Log</h2>
-    <p class="desc">One entry per paper production run, made from the fiber in one sack. Sacks with no fiber left will not appear in the list.</p>
+    <p class="desc">One entry per paper production run, made from the fiber in one sack.</p>
     <form id="formPaperProd">
       <div class="grid">
         <div>
@@ -271,9 +263,7 @@
           <label class="req">Entered By</label>
           <input type="text" id="pp_by" placeholder="Operator name" required>
         </div>
-        <div>
-          <button type="submit" class="btn">Save Batch</button>
-        </div>
+        <div><button type="submit" class="btn">Save Batch</button></div>
       </div>
       <div id="pp_warning" class="warning"></div>
     </form>
@@ -284,11 +274,10 @@
   </div>
 </section>
 
-<!-- ================= PAPER SACK STORAGE ================= -->
 <section id="tab-paperSack" style="display:none;">
   <div class="card">
     <h2>Paper Sack Storage</h2>
-    <p class="desc">Pack one or more paper batches into a sack for shipping. Add each batch's sheet count below, then save the sack. Paper batches already fully used will not appear in the list.</p>
+    <p class="desc">Pack one or more paper batches into a sack for shipping.</p>
     <form id="formPaperSackHeader">
       <div class="grid">
         <div>
@@ -316,12 +305,9 @@
         <label class="req">Sheets from this batch</label>
         <input type="number" id="ps_sheets" min="1" step="1">
       </div>
-      <div>
-        <button type="button" class="btn secondary" id="ps_addline">+ Add to Sack</button>
-      </div>
+      <div><button type="button" class="btn secondary" id="ps_addline">+ Add to Sack</button></div>
     </div>
     <div id="ps_warning" class="warning"></div>
-
     <div class="pending-table">
       <table id="ps_pending_table" style="display:none;">
         <thead><tr><th>Paper Batch</th><th>Sheets</th><th></th></tr></thead>
@@ -335,622 +321,15 @@
   </div>
   <div class="card">
     <h2>All Paper Sacks</h2>
-    <p class="desc">A sack can contain several paper batches, so line-item corrections are made directly in the <strong>PaperSackStorage</strong> tab of the Google Sheet.</p>
+    <p class="desc">A sack can contain several paper batches, so line-item corrections are kept as rows in Supabase.</p>
     <div id="paperSackTable"></div>
   </div>
 </section>
-
 </main>
-<footer>Fiber Factory Batch Tracking System &middot; Data is saved to a shared Google Sheet and visible to everyone using this dashboard.</footer>
 
-<script>
-// ==================================================================
-// BACKEND CONFIG
-// Paste the Web App URL you get after deploying the Apps Script
-// (see Code.gs / setup instructions) between the quotes below.
-// ==================================================================
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbygM4IsIOo3k485CA1dFsVmYr098HuN5Ey85J0Tsc-GsvRo2Gr_PhtnMxFDEW-nmmkiEA/exec";
+<footer>Fiber Factory Batch Tracking System &middot; Data is saved in Supabase and can be exported to Excel.</footer>
 
-const KEYS = {
-  fiberProduction: 'fiberProduction',
-  fiberSackStorage: 'fiberSackStorage',
-  paperProduction: 'paperProduction',
-  paperSackStorage: 'paperSackStorage',
-};
-
-let state = { fiberProduction: [], fiberSackStorage: [], paperProduction: [], paperSackStorage: [] };
-let pendingFiberSack = [];
-let pendingPaperSack = [];
-
-function pad(n){ return String(n).padStart(4,'0'); }
-function fmtDate(d){ if(!d) return ''; return d; }
-function todayStr(){ return new Date().toISOString().slice(0,10); }
-
-function backendConfigured(){
-  return APPS_SCRIPT_URL && !APPS_SCRIPT_URL.startsWith('PASTE_');
-}
-
-// ------------------------------------------------------------------
-// JSONP transport — loads the Apps Script response via a <script> tag
-// instead of fetch(). Script-tag loads are never subject to CORS, so
-// this works reliably regardless of how Google's proxy handles headers
-// for cross-origin fetch/XHR requests (a known source of flaky CORS
-// errors with Apps Script Web Apps).
-// ------------------------------------------------------------------
-function jsonp(params){
-  return new Promise((resolve, reject)=>{
-    const cbName = 'jsonp_cb_' + Math.random().toString(36).slice(2) + Date.now();
-    const script = document.createElement('script');
-    let done = false;
-    const cleanup = ()=>{ done = true; delete window[cbName]; script.remove(); };
-    const timer = setTimeout(()=>{
-      if(done) return;
-      cleanup();
-      reject(new Error('Request timed out contacting the database'));
-    }, 20000);
-    window[cbName] = (data)=>{
-      if(done) return;
-      clearTimeout(timer);
-      cleanup();
-      resolve(data);
-    };
-    const qs = new URLSearchParams({ ...params, callback: cbName }).toString();
-    script.src = `${APPS_SCRIPT_URL}?${qs}`;
-    script.onerror = ()=>{
-      if(done) return;
-      clearTimeout(timer);
-      cleanup();
-      reject(new Error('Network error contacting the database'));
-    };
-    document.body.appendChild(script);
-  });
-}
-
-function coerceRow(key, row){
-  // Google Sheets can hand back numbers/strings/Date objects — normalize them.
-  const r = { ...row };
-  if(r.date && typeof r.date !== 'string') r.date = String(r.date).slice(0,10);
-  if(r.createdAt && typeof r.createdAt !== 'string') r.createdAt = String(r.createdAt);
-  ['kg','kgUsed','sheets'].forEach(f=>{ if(r[f] !== undefined && r[f] !== '') r[f] = Number(r[f]); });
-  return r;
-}
-
-async function loadAll(){
-  if(!backendConfigured()){
-    document.getElementById('configBanner').style.display = 'block';
-    return;
-  }
-  try{
-    const data = await jsonp({ action: 'listAll' });
-    if(!data.ok) throw new Error(data.error || 'load failed');
-    Object.keys(KEYS).forEach(k=>{
-      state[k] = (data.data[k] || []).map(row => coerceRow(k, row));
-    });
-    setSaving(true);
-  }catch(e){
-    document.getElementById('saveText').textContent = 'Could not load data - check connection';
-    document.getElementById('saveDot').style.background = '#e05a4e';
-  }
-}
-
-// Append one or more new records to a sheet/table, then merge into local state.
-async function persist(key, records){
-  if(!backendConfigured()){
-    document.getElementById('configBanner').style.display = 'block';
-    throw new Error('Backend not configured');
-  }
-  setSaving(false);
-  try{
-    for(const row of records){
-      const data = await jsonp({ action: 'append', sheet: key, row: JSON.stringify(row) });
-      if(!data.ok) throw new Error(data.error || 'save failed');
-    }
-    records.forEach(row => state[key].push(row));
-    setSaving(true);
-  }catch(e){
-    document.getElementById('saveText').textContent = 'Save failed - check connection';
-    document.getElementById('saveDot').style.background = '#e05a4e';
-    throw e;
-  }
-}
-
-async function deleteRecord(key, id){
-  if(!backendConfigured()) return;
-  if(!confirm('Delete this entry? This cannot be undone.')) return;
-  setSaving(false);
-  try{
-    const data = await jsonp({ action: 'delete', sheet: key, id });
-    if(!data.ok) throw new Error(data.error || 'delete failed');
-    state[key] = state[key].filter(r => r.id !== id);
-    setSaving(true);
-    renderAll();
-  }catch(e){
-    alert('Could not delete — check your connection and try again.');
-    setSaving(true);
-  }
-}
-
-document.getElementById('refreshBtn').addEventListener('click', async ()=>{
-  await loadAll();
-  renderAll();
-});
-
-function setSaving(saved){
-  const dot = document.getElementById('saveDot');
-  const txt = document.getElementById('saveText');
-  if(saved){ dot.style.background = '#7CD992'; txt.textContent = 'All changes saved'; }
-  else { dot.style.background = '#e0c95a'; txt.textContent = 'Saving...'; }
-}
-
-// ---------- derived stats ----------
-function fiberBatchStats(){
-  return state.fiberProduction.map((b, i) => {
-    const used = state.fiberSackStorage
-      .filter(r => r.batchId === b.batchId)
-      .reduce((s,r) => s + r.kg, 0);
-    const remaining = Math.round((b.kg - used) * 100) / 100;
-    return { ...b, seq:i, used, remaining, status: statusOf(b.kg, used, remaining) };
-  });
-}
-function fiberSackStats(){
-  const sackIds = [...new Set(state.fiberSackStorage.map(r=>r.sackId))];
-  return sackIds.map((sackId, i) => {
-    const rows = state.fiberSackStorage.filter(r=>r.sackId===sackId);
-    const total = rows.reduce((s,r)=>s+r.kg,0);
-    const date = rows[0].date;
-    const enteredBy = rows[0].enteredBy;
-    const batches = rows.map(r=>r.batchId);
-    const used = state.paperProduction
-      .filter(r=>r.sackId===sackId)
-      .reduce((s,r)=>s+r.kgUsed,0);
-    const remaining = Math.round((total-used)*100)/100;
-    return { sackId, date, enteredBy, batches, total, used, remaining, seq:i, status: statusOf(total, used, remaining) };
-  }).sort((a,b)=> a.date.localeCompare(b.date));
-}
-function paperBatchStats(){
-  return state.paperProduction.map((b,i) => {
-    const used = state.paperSackStorage
-      .filter(r=>r.batchId===b.batchId)
-      .reduce((s,r)=>s+r.sheets,0);
-    const remaining = b.sheets - used;
-    return { ...b, seq:i, used, remaining, status: statusOf(b.sheets, used, remaining) };
-  });
-}
-function paperSackStats(){
-  const sackIds = [...new Set(state.paperSackStorage.map(r=>r.sackId))];
-  return sackIds.map((sackId,i) => {
-    const rows = state.paperSackStorage.filter(r=>r.sackId===sackId);
-    const total = rows.reduce((s,r)=>s+r.sheets,0);
-    const date = rows[0].date;
-    const enteredBy = rows[0].enteredBy;
-    const batches = rows.map(r=>r.batchId);
-    return { sackId, date, enteredBy, batches, total, seq:i };
-  }).sort((a,b)=> a.date.localeCompare(b.date));
-}
-function statusOf(total, used, remaining){
-  if(used <= 0) return 'notstarted';
-  if(remaining <= 0.0001) return 'full';
-  return 'partial';
-}
-// flag: item has remaining stock, but a LATER item (by production order) already has usage > 0
-function withSkipFlags(list){
-  return list.map((item, idx) => {
-    const laterUsed = list.slice(idx+1).some(l => l.used > 0);
-    const skipped = item.remaining > 0.0001 && item.used > 0 === false ? false : false;
-    const flagged = item.remaining > 0.0001 && laterUsed;
-    return { ...item, flagged };
-  });
-}
-
-// ---------- available (unused-up) lists, oldest first ----------
-function availableFiberBatches(){
-  return fiberBatchStats().filter(b => b.remaining > 0.0001);
-}
-function availableFiberSacks(){
-  return fiberSackStats().filter(s => s.remaining > 0.0001);
-}
-function availablePaperBatches(){
-  return paperBatchStats().filter(b => b.remaining > 0.0001);
-}
-
-// ---------- chip helper ----------
-function chip(status){
-  const map = { notstarted:['Not started','notstarted'], partial:['Partially used','partial'], full:['Fully used','full'] };
-  const [label, cls] = map[status];
-  return `<span class="chip ${cls}">${label}</span>`;
-}
-
-// ==================================================================
-// RENDER: Overview
-// ==================================================================
-function renderOverview(){
-  const fb = withSkipFlags(fiberBatchStats());
-  const fs = withSkipFlags(fiberSackStats());
-  const pb = withSkipFlags(paperBatchStats());
-  const ps = paperSackStats();
-
-  const totalFiberKg = state.fiberProduction.reduce((s,b)=>s+b.kg,0);
-  const totalPaperSheets = state.paperProduction.reduce((s,b)=>s+b.sheets,0);
-  const flags = [...fb, ...fs, ...pb].filter(x=>x.flagged).length;
-
-  document.getElementById('statRow').innerHTML = `
-    <div class="stat"><div class="num">${fb.length}</div><div class="lbl">Fiber Batches</div></div>
-    <div class="stat"><div class="num">${totalFiberKg.toFixed(1)} kg</div><div class="lbl">Total Fiber Produced</div></div>
-    <div class="stat"><div class="num">${fs.length}</div><div class="lbl">Fiber Sacks</div></div>
-    <div class="stat"><div class="num">${pb.length}</div><div class="lbl">Paper Batches</div></div>
-    <div class="stat"><div class="num">${totalPaperSheets}</div><div class="lbl">Total Sheets Produced</div></div>
-    <div class="stat"><div class="num">${ps.length}</div><div class="lbl">Paper Sacks</div></div>
-  `;
-
-  document.getElementById('flagBanner').innerHTML = flags > 0
-    ? `<div class="flag-banner">&#9888; ${flags} batch/sack${flags>1?'es':''} flagged: used out of order while an older batch still has stock. See rows marked "Skipped" below.</div>`
-    : `<div class="flag-banner ok">&#10003; No FIFO issues detected. All batches are being used in the correct order.</div>`;
-
-  document.getElementById('ovFiberBatches').innerHTML = fb.length ? `
-    <table><thead><tr><th>Batch ID</th><th>Date</th><th>Produced (kg)</th><th>Used (kg)</th><th>Remaining (kg)</th><th>Status</th></tr></thead>
-    <tbody>${fb.map(b=>`<tr><td class="mono">${b.batchId}</td><td>${b.date}</td><td>${b.kg.toFixed(1)}</td><td>${b.used.toFixed(1)}</td><td>${b.remaining.toFixed(1)}</td><td>${b.flagged?'<span class="chip skip">Skipped</span>':chip(b.status)}</td></tr>`).join('')}</tbody></table>
-  ` : `<div class="empty">No fiber batches yet.</div>`;
-
-  document.getElementById('ovFiberSacks').innerHTML = fs.length ? `
-    <table><thead><tr><th>Sack ID</th><th>Date Packed</th><th>Fiber Batches Inside</th><th>Total (kg)</th><th>Used (kg)</th><th>Remaining (kg)</th><th>Status</th></tr></thead>
-    <tbody>${fs.map(s=>`<tr><td class="mono">${s.sackId}</td><td>${s.date}</td><td class="mono">${s.batches.join(', ')}</td><td>${s.total.toFixed(1)}</td><td>${s.used.toFixed(1)}</td><td>${s.remaining.toFixed(1)}</td><td>${s.flagged?'<span class="chip skip">Skipped</span>':chip(s.status)}</td></tr>`).join('')}</tbody></table>
-  ` : `<div class="empty">No fiber sacks yet.</div>`;
-
-  document.getElementById('ovPaperBatches').innerHTML = pb.length ? `
-    <table><thead><tr><th>Batch ID</th><th>Date</th><th>Fiber Sack Used</th><th>Sheets Produced</th><th>Used (sheets)</th><th>Remaining (sheets)</th><th>Status</th></tr></thead>
-    <tbody>${pb.map(b=>`<tr><td class="mono">${b.batchId}</td><td>${b.date}</td><td class="mono">${b.sackId}</td><td>${b.sheets}</td><td>${b.used}</td><td>${b.remaining}</td><td>${b.flagged?'<span class="chip skip">Skipped</span>':chip(b.status)}</td></tr>`).join('')}</tbody></table>
-  ` : `<div class="empty">No paper batches yet.</div>`;
-
-  document.getElementById('ovPaperSacks').innerHTML = ps.length ? `
-    <table><thead><tr><th>Sack ID</th><th>Date Packed</th><th>Paper Batches Inside</th><th>Total Sheets</th></tr></thead>
-    <tbody>${ps.map(s=>`<tr><td class="mono">${s.sackId}</td><td>${s.date}</td><td class="mono">${s.batches.join(', ')}</td><td>${s.total}</td></tr>`).join('')}</tbody></table>
-  ` : `<div class="empty">No paper sacks yet.</div>`;
-}
-
-// ==================================================================
-// RENDER: tables per tab
-// ==================================================================
-function renderFiberProdTable(){
-  const rows = fiberBatchStats();
-  document.getElementById('fiberProdTable').innerHTML = rows.length ? `
-    <table><thead><tr><th>Batch ID</th><th>Date</th><th>Kg Produced</th><th>Used</th><th>Remaining</th><th>Status</th><th>Entered By</th><th></th></tr></thead>
-    <tbody>${rows.map(b=>`<tr><td class="mono">${b.batchId}</td><td>${b.date}</td><td>${b.kg.toFixed(1)}</td><td>${b.used.toFixed(1)}</td><td>${b.remaining.toFixed(1)}</td><td>${chip(b.status)}</td><td>${b.enteredBy}</td><td class="rm" data-key="fiberProduction" data-id="${b.id}">Delete</td></tr>`).join('')}</tbody></table>
-  ` : `<div class="empty">No entries yet. Add the first fiber batch above.</div>`;
-  bindDeleteButtons('fiberProdTable');
-}
-function bindDeleteButtons(containerId){
-  document.getElementById(containerId).querySelectorAll('.rm').forEach(el=>{
-    el.addEventListener('click', ()=> deleteRecord(el.dataset.key, el.dataset.id));
-  });
-}
-function renderFiberSackTable(){
-  const rows = fiberSackStats();
-  document.getElementById('fiberSackTable').innerHTML = rows.length ? `
-    <table><thead><tr><th>Sack ID</th><th>Date Packed</th><th>Fiber Batches</th><th>Total Kg</th><th>Used</th><th>Remaining</th><th>Status</th><th>Entered By</th></tr></thead>
-    <tbody>${rows.map(s=>`<tr><td class="mono">${s.sackId}</td><td>${s.date}</td><td class="mono">${s.batches.join(', ')}</td><td>${s.total.toFixed(1)}</td><td>${s.used.toFixed(1)}</td><td>${s.remaining.toFixed(1)}</td><td>${chip(s.status)}</td><td>${s.enteredBy}</td></tr>`).join('')}</tbody></table>
-  ` : `<div class="empty">No sacks packed yet.</div>`;
-}
-function renderPaperProdTable(){
-  const rows = paperBatchStats();
-  document.getElementById('paperProdTable').innerHTML = rows.length ? `
-    <table><thead><tr><th>Batch ID</th><th>Date</th><th>Fiber Sack Used</th><th>Kg Used</th><th>Sheets Produced</th><th>Used</th><th>Remaining</th><th>Status</th><th>Entered By</th><th></th></tr></thead>
-    <tbody>${rows.map(b=>`<tr><td class="mono">${b.batchId}</td><td>${b.date}</td><td class="mono">${b.sackId}</td><td>${b.kgUsed.toFixed(1)}</td><td>${b.sheets}</td><td>${b.used}</td><td>${b.remaining}</td><td>${chip(b.status)}</td><td>${b.enteredBy}</td><td class="rm" data-key="paperProduction" data-id="${b.id}">Delete</td></tr>`).join('')}</tbody></table>
-  ` : `<div class="empty">No paper produced yet.</div>`;
-  bindDeleteButtons('paperProdTable');
-}
-function renderPaperSackTable(){
-  const rows = paperSackStats();
-  document.getElementById('paperSackTable').innerHTML = rows.length ? `
-    <table><thead><tr><th>Sack ID</th><th>Date Packed</th><th>Paper Batches</th><th>Total Sheets</th><th>Entered By</th></tr></thead>
-    <tbody>${rows.map(s=>`<tr><td class="mono">${s.sackId}</td><td>${s.date}</td><td class="mono">${s.batches.join(', ')}</td><td>${s.total}</td><td>${s.enteredBy}</td></tr>`).join('')}</tbody></table>
-  ` : `<div class="empty">No paper sacks packed yet.</div>`;
-}
-
-function renderAll(){
-  renderOverview();
-  renderFiberProdTable();
-  renderFiberSackTable();
-  renderPaperProdTable();
-  renderPaperSackTable();
-  populateFiberBatchDropdown();
-  populatePaperSackDropdown();
-  populatePaperBatchDropdown();
-}
-
-// ==================================================================
-// TABS
-// ==================================================================
-document.getElementById('tabNav').addEventListener('click', (e)=>{
-  if(e.target.tagName !== 'BUTTON') return;
-  document.querySelectorAll('#tabNav button').forEach(b=>b.classList.remove('active'));
-  e.target.classList.add('active');
-  document.querySelectorAll('main > section').forEach(s=>s.style.display='none');
-  document.getElementById('tab-'+e.target.dataset.tab).style.display='block';
-});
-
-// ==================================================================
-// FIBER PRODUCTION FORM
-// ==================================================================
-document.getElementById('formFiberProd').addEventListener('submit', async (e)=>{
-  e.preventDefault();
-  const date = document.getElementById('fp_date').value;
-  const kg = parseFloat(document.getElementById('fp_kg').value);
-  const by = document.getElementById('fp_by').value.trim();
-  if(!date || !kg || !by) return;
-  const batchId = 'FB-' + pad(state.fiberProduction.length+1);
-  const rec = { id: crypto.randomUUID(), date, kg, batchId, enteredBy: by };
-  try{
-    await persist('fiberProduction', [rec]);
-    e.target.reset();
-    document.getElementById('fp_date').value = todayStr();
-    renderAll();
-  }catch(err){
-    alert('Could not save the batch — check your connection and try again.');
-  }
-});
-
-// ==================================================================
-// FIBER SACK STORAGE (builder pattern)
-// ==================================================================
-function populateFiberBatchDropdown(){
-  const sel = document.getElementById('fs_batch');
-  const avail = availableFiberBatches().filter(b => !pendingFiberSack.some(p=>p.batchId===b.batchId && p.remainingAfter<=0.0001));
-  // recompute remaining considering pending lines already added in this session
-  const merged = availableFiberBatches().map(b=>{
-    const pendingKg = pendingFiberSack.filter(p=>p.batchId===b.batchId).reduce((s,p)=>s+p.kg,0);
-    return { ...b, liveRemaining: Math.round((b.remaining - pendingKg)*100)/100 };
-  }).filter(b => b.liveRemaining > 0.0001);
-
-  sel.innerHTML = merged.map(b=>`<option value="${b.batchId}" data-remaining="${b.liveRemaining}">${b.batchId} — ${b.liveRemaining.toFixed(1)} kg available (produced ${b.date})</option>`).join('');
-  const help = document.getElementById('fs_batch_help');
-  help.textContent = merged.length ? '' : 'No fiber batches available — all fiber has already been packed into sacks.';
-}
-
-document.getElementById('fs_addline').addEventListener('click', ()=>{
-  const sel = document.getElementById('fs_batch');
-  const batchId = sel.value;
-  const kg = parseFloat(document.getElementById('fs_kg').value);
-  const warnBox = document.getElementById('fs_warning');
-  warnBox.classList.remove('show');
-  if(!batchId){ return; }
-  if(!kg || kg <= 0){ return; }
-
-  const merged = availableFiberBatches().map(b=>{
-    const pendingKg = pendingFiberSack.filter(p=>p.batchId===b.batchId).reduce((s,p)=>s+p.kg,0);
-    return { ...b, liveRemaining: Math.round((b.remaining - pendingKg)*100)/100 };
-  });
-  const chosen = merged.find(b=>b.batchId===batchId);
-  if(!chosen || kg > chosen.liveRemaining + 0.0001){
-    warnBox.classList.add('show');
-    warnBox.innerHTML = `<strong>Quantity too high</strong>Only ${chosen ? chosen.liveRemaining.toFixed(1) : 0} kg is available from ${batchId}.`;
-    return;
-  }
-  // FIFO skip check: any earlier batch (lower seq) still has liveRemaining > 0?
-  const earlierAvailable = merged.filter(b => b.seq < chosen.seq && b.liveRemaining > 0.0001);
-  if(earlierAvailable.length){
-    warnBox.classList.add('show');
-    warnBox.innerHTML = `<strong>&#9888; You have missed an earlier batch</strong>` +
-      earlierAvailable.map(b=>`${b.batchId} still has ${b.liveRemaining.toFixed(1)} kg unused and was produced before ${batchId}.`).join(' ') +
-      ` First-prepared fiber should be used first. You can still add this if it's intentional.`;
-  }
-
-  pendingFiberSack.push({ batchId, kg });
-  document.getElementById('fs_kg').value = '';
-  renderPendingFiberSack();
-  populateFiberBatchDropdown();
-});
-
-function renderPendingFiberSack(){
-  const table = document.getElementById('fs_pending_table');
-  const empty = document.getElementById('fs_pending_empty');
-  const saveBtn = document.getElementById('fs_savesack');
-  if(pendingFiberSack.length === 0){
-    table.style.display = 'none';
-    empty.style.display = 'block';
-    saveBtn.disabled = true;
-    return;
-  }
-  table.style.display = 'table';
-  empty.style.display = 'none';
-  saveBtn.disabled = false;
-  table.querySelector('tbody').innerHTML = pendingFiberSack.map((p,i)=>
-    `<tr><td class="mono">${p.batchId}</td><td>${p.kg.toFixed(1)} kg</td><td class="rm" data-i="${i}">Remove</td></tr>`
-  ).join('');
-  table.querySelectorAll('.rm').forEach(el=>{
-    el.addEventListener('click', ()=>{
-      pendingFiberSack.splice(parseInt(el.dataset.i),1);
-      renderPendingFiberSack();
-      populateFiberBatchDropdown();
-    });
-  });
-}
-
-document.getElementById('fs_savesack').addEventListener('click', async ()=>{
-  const date = document.getElementById('fs_date').value;
-  const sackId = document.getElementById('fs_sackid').value.trim();
-  const by = document.getElementById('fs_by').value.trim();
-  if(!date || !sackId || !by || pendingFiberSack.length===0) {
-    alert('Please fill in Date, Sack ID, Entered By, and add at least one fiber batch.');
-    return;
-  }
-  const recs = pendingFiberSack.map(p=>(
-    { id: crypto.randomUUID(), date, sackId, batchId: p.batchId, kg: p.kg, enteredBy: by }
-  ));
-  try{
-    await persist('fiberSackStorage', recs);
-    pendingFiberSack = [];
-    document.getElementById('formFiberSackHeader').reset();
-    document.getElementById('fs_date').value = todayStr();
-    document.getElementById('fs_warning').classList.remove('show');
-    renderPendingFiberSack();
-    renderAll();
-  }catch(err){
-    alert('Could not save the sack — check your connection and try again.');
-  }
-});
-
-// ==================================================================
-// PAPER PRODUCTION FORM
-// ==================================================================
-function populatePaperSackDropdown(){
-  const sel = document.getElementById('pp_sack');
-  const avail = availableFiberSacks();
-  sel.innerHTML = avail.map(s=>`<option value="${s.sackId}" data-remaining="${s.remaining}">${s.sackId} — ${s.remaining.toFixed(1)} kg available</option>`).join('');
-  const help = document.getElementById('pp_sack_help');
-  help.textContent = avail.length ? '' : 'No fiber sacks available — pack a sack on Tab 2 first.';
-}
-
-document.getElementById('pp_sack').addEventListener('change', checkPaperProdFifo);
-function checkPaperProdFifo(){
-  const warnBox = document.getElementById('pp_warning');
-  warnBox.classList.remove('show');
-  const sackId = document.getElementById('pp_sack').value;
-  if(!sackId) return;
-  const avail = availableFiberSacks();
-  const chosen = avail.find(s=>s.sackId===sackId);
-  if(!chosen) return;
-  const earlier = avail.filter(s => s.seq < chosen.seq && s.remaining > 0.0001);
-  if(earlier.length){
-    warnBox.classList.add('show');
-    warnBox.innerHTML = `<strong>&#9888; You have missed an earlier fiber sack</strong>` +
-      earlier.map(s=>`${s.sackId} still has ${s.remaining.toFixed(1)} kg unused and was packed before ${sackId}.`).join(' ') +
-      ` First-packed fiber should be used first for paper. You can still proceed if it's intentional.`;
-  }
-}
-
-document.getElementById('formPaperProd').addEventListener('submit', async (e)=>{
-  e.preventDefault();
-  const date = document.getElementById('pp_date').value;
-  const sackId = document.getElementById('pp_sack').value;
-  const kgUsed = parseFloat(document.getElementById('pp_kg').value);
-  const sheets = parseInt(document.getElementById('pp_sheets').value);
-  const by = document.getElementById('pp_by').value.trim();
-  if(!date || !sackId || !kgUsed || !sheets || !by) return;
-
-  const chosen = availableFiberSacks().find(s=>s.sackId===sackId);
-  if(!chosen || kgUsed > chosen.remaining + 0.0001){
-    alert(`Only ${chosen ? chosen.remaining.toFixed(1) : 0} kg is available in sack ${sackId}.`);
-    return;
-  }
-  const batchId = 'PB-' + pad(state.paperProduction.length+1);
-  const rec = { id: crypto.randomUUID(), date, sackId, kgUsed, sheets, batchId, enteredBy: by };
-  try{
-    await persist('paperProduction', [rec]);
-    e.target.reset();
-    document.getElementById('pp_date').value = todayStr();
-    document.getElementById('pp_warning').classList.remove('show');
-    renderAll();
-  }catch(err){
-    alert('Could not save the batch — check your connection and try again.');
-  }
-});
-
-// ==================================================================
-// PAPER SACK STORAGE (builder pattern)
-// ==================================================================
-function populatePaperBatchDropdown(){
-  const sel = document.getElementById('ps_batch');
-  const merged = availablePaperBatches().map(b=>{
-    const pendingSheets = pendingPaperSack.filter(p=>p.batchId===b.batchId).reduce((s,p)=>s+p.sheets,0);
-    return { ...b, liveRemaining: b.remaining - pendingSheets };
-  }).filter(b => b.liveRemaining > 0);
-  sel.innerHTML = merged.map(b=>`<option value="${b.batchId}" data-remaining="${b.liveRemaining}">${b.batchId} — ${b.liveRemaining} sheets available (produced ${b.date})</option>`).join('');
-  const help = document.getElementById('ps_batch_help');
-  help.textContent = merged.length ? '' : 'No paper batches available — all paper has already been packed into sacks.';
-}
-
-document.getElementById('ps_addline').addEventListener('click', ()=>{
-  const sel = document.getElementById('ps_batch');
-  const batchId = sel.value;
-  const sheets = parseInt(document.getElementById('ps_sheets').value);
-  const warnBox = document.getElementById('ps_warning');
-  warnBox.classList.remove('show');
-  if(!batchId){ return; }
-  if(!sheets || sheets <= 0){ return; }
-
-  const merged = availablePaperBatches().map(b=>{
-    const pendingSheets = pendingPaperSack.filter(p=>p.batchId===b.batchId).reduce((s,p)=>s+p.sheets,0);
-    return { ...b, liveRemaining: b.remaining - pendingSheets };
-  });
-  const chosen = merged.find(b=>b.batchId===batchId);
-  if(!chosen || sheets > chosen.liveRemaining){
-    warnBox.classList.add('show');
-    warnBox.innerHTML = `<strong>Quantity too high</strong>Only ${chosen ? chosen.liveRemaining : 0} sheets available from ${batchId}.`;
-    return;
-  }
-  const earlierAvailable = merged.filter(b => b.seq < chosen.seq && b.liveRemaining > 0);
-  if(earlierAvailable.length){
-    warnBox.classList.add('show');
-    warnBox.innerHTML = `<strong>&#9888; You have missed an earlier paper batch</strong>` +
-      earlierAvailable.map(b=>`${b.batchId} still has ${b.liveRemaining} sheets unused and was produced before ${batchId}.`).join(' ') +
-      ` First-prepared paper should be shipped first. You can still add this if it's intentional.`;
-  }
-
-  pendingPaperSack.push({ batchId, sheets });
-  document.getElementById('ps_sheets').value = '';
-  renderPendingPaperSack();
-  populatePaperBatchDropdown();
-});
-
-function renderPendingPaperSack(){
-  const table = document.getElementById('ps_pending_table');
-  const empty = document.getElementById('ps_pending_empty');
-  const saveBtn = document.getElementById('ps_savesack');
-  if(pendingPaperSack.length === 0){
-    table.style.display = 'none';
-    empty.style.display = 'block';
-    saveBtn.disabled = true;
-    return;
-  }
-  table.style.display = 'table';
-  empty.style.display = 'none';
-  saveBtn.disabled = false;
-  table.querySelector('tbody').innerHTML = pendingPaperSack.map((p,i)=>
-    `<tr><td class="mono">${p.batchId}</td><td>${p.sheets} sheets</td><td class="rm" data-i="${i}">Remove</td></tr>`
-  ).join('');
-  table.querySelectorAll('.rm').forEach(el=>{
-    el.addEventListener('click', ()=>{
-      pendingPaperSack.splice(parseInt(el.dataset.i),1);
-      renderPendingPaperSack();
-      populatePaperBatchDropdown();
-    });
-  });
-}
-
-document.getElementById('ps_savesack').addEventListener('click', async ()=>{
-  const date = document.getElementById('ps_date').value;
-  const sackId = document.getElementById('ps_sackid').value.trim();
-  const by = document.getElementById('ps_by').value.trim();
-  if(!date || !sackId || !by || pendingPaperSack.length===0) {
-    alert('Please fill in Date, Sack ID, Entered By, and add at least one paper batch.');
-    return;
-  }
-  const recs = pendingPaperSack.map(p=>(
-    { id: crypto.randomUUID(), date, sackId, batchId: p.batchId, sheets: p.sheets, enteredBy: by }
-  ));
-  try{
-    await persist('paperSackStorage', recs);
-    pendingPaperSack = [];
-    document.getElementById('formPaperSackHeader').reset();
-    document.getElementById('ps_date').value = todayStr();
-    document.getElementById('ps_warning').classList.remove('show');
-    renderPendingPaperSack();
-    renderAll();
-  }catch(err){
-    alert('Could not save the sack — check your connection and try again.');
-  }
-});
-
-// ==================================================================
-// INIT
-// ==================================================================
-(async function init(){
-  ['fp_date','fs_date','pp_date','ps_date'].forEach(id=>{
-    document.getElementById(id).value = todayStr();
-  });
-  await loadAll();
-  renderAll();
-})();
-</script>
+<script src="./js/runtime-config.js"></script>
+<script type="module" src="./js/app.js"></script>
 </body>
 </html>
